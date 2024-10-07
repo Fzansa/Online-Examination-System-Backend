@@ -5,6 +5,7 @@ const AuthRoutes = require('./routes/Auth');
 const cookieParser = require('cookie-parser');
 const AdminRoutes = require('./routes/AdminRoute');
 const { isAdmin } = require('./middleware/verfyToken');
+const UserRoutes = require('./routes/UserRoute');
 require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 4000;
@@ -17,7 +18,8 @@ app.use(cors({
     credentials: true, // allows cookies to be sent
   }));
 app.use('/api/auth', AuthRoutes);
-app.use('/api/admin', AdminRoutes)
+app.use('/api/admin', AdminRoutes);
+app.use('/api/user', UserRoutes);
 
 app.get('/', (req, res) => res.send('Hello World!'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

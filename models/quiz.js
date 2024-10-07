@@ -20,7 +20,7 @@ const questionSchema = new mongoose.Schema({
 
 // Quiz Schema
 const quizSchema = new mongoose.Schema({
-  title: { type: String, required: true }, // Title of the quiz
+  title: { type: String, required: true, unique: true }, // Title of the quiz
   description: { type: String }, // Description of the quiz
   duration: { type: Number, required: true }, // Duration of the quiz in minutes
   totalMarks: { type: Number, required: true }, // Total marks for the quiz
