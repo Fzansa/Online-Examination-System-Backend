@@ -10,5 +10,17 @@ const getQuizz = async (req, res) => {
     }
 }
 
+const getSingleQuizz = async (req, res) => {
+    try {
+        const { id } = req.body;
+        const quizz = await quizModal.findById(id)
+        res.status(200).json({ quizz });
+    } catch (error) {
+        res.status(500).json({ message: 'internal server error' });
+        console.log(error);
+    }
+}
 
-module.exports = { getQuizz }
+
+
+module.exports = { getQuizz, getSingleQuizz }
